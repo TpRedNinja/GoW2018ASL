@@ -1,4 +1,4 @@
-state("GoW", "Steam 1.0.12")
+state("GoW", "Steam 1.0.13")
 {
     //string100 LocalObj : 0x22C67E0; //Location + objective in string
     int Obj : 0x22C6904; //Objective in int; Null objective = 0
