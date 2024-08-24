@@ -32,13 +32,14 @@ startup
 
     settings.Add("100% NG+", false);
     settings.SetToolTip("100% NG+", "Enable this for the other option bellow. IMPORTANT! the stuff bellow is follows TpRedNinja's 100% splits and route so might not line up with your splits");
-    settings.Add("Main Story", false, "100% NG+");
-    settings.SetToolTip("Main Story", "Splits for the main story");
-    settings.Add("Valks", false, "100% NG+");
+    settings.Add("Main Story", false, "Main Story splits", "100% NG+");
+    settings.SetToolTip("Main Story", "Splits for certain mainstory stuff such as 1st troll fight, completeing the story portion of alfheim, & some other place");
+    settings.Add("Valks", false, "Valkyrie splits", "100% NG+");
     settings.SetToolTip("Valks", "Splits whenever you gain one of the Valkyrie's helmets");
-    settings.Add("Side Stuff", false, "100% NG+");
-    settings.SetToolTip("Side Stuff", "Splits whenever you gain 9 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
-
+    settings.Add("Side Stuff", false, "Collectible splits", "100% NG+");
+    settings.SetToolTip("Side Stuff", "Splits whenever you gain 5, 9, or 18 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
+    settings.Add("Locations", false, "Location splits", "100% NG+");
+    settings.SetToolTip("Locations", "Splits when you leave Stone falls after first visit and second visit, Brui storeroom, isle of death, iron cove, when you are at the foothills going into the valkyrie area, after atreus kills modi, then finally when you do the final clumb to the peak for the second time around");
     vars.completedsplits = new List<string>();
     vars.Hundo = new List<string>();
 }
@@ -166,23 +167,35 @@ split
         return false;
     }
    
-    if (settings["Side Stuff"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Stone Falls - Return to Týr’s Vault")
+    if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to the Witch's Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch's Cave")
+    {
+        vars.completedsplits.inserts(0, "Stone Falls I");
+        return true;
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Isle of Death - Return to Týr’s Vault")
+    {
+        vars.completedsplits.inserts(0, "Isle of Death");
+        return true;
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault")
+    {
+        vars.completedsplits.inserts(0, "Iron Cove");
+        return true;
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Stone Falls - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Stone Falls 100%");
         return true;
-    } else if (settings["Side Stuff"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault")
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Buri's Storeroom");
         return true;
-    } else if (settings["Side Stuff"] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
     {
         vars.completedsplits.inserts(0, "Foothills III");
         return true;
-    } else if (settings["Side Stuff"] && current.SaveDescript == "Midgard - The Mountain - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - The Mountain - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
     {
         vars.completedsplits.inserts(0, "Foothills 100%");
         return true;
-    } else if (settings["Side Stuff"] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Find a new path up to the summit" && old.SaveDescript == "Midgard - The Mountain - Find a new path up to the summit")
+    } else if (settings[Locations] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Find a new path up to the summit" && old.SaveDescript == "Midgard - The Mountain - Find a new path up to the summit")
     {
         vars.completedsplits.inserts(0, "Mountain II");
         return true;
