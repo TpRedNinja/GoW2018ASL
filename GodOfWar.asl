@@ -24,21 +24,19 @@ state("GoW")
 
 startup
 {
-    settings.Add("Split for main game", false);
+    settings.Add("Split for Main Game", true);
+    settings.SetToolTip("Split for Main Game", "Splits everytime you complete a story task");
     settings.Add("Split for Valkyrie%", false);
-    vars.PrevObj = -1;
-    vars.PrevShop = -1;
-    vars.PrevValk = -1;
-
+    settings.SetToolTip("Split for Valkyrie%", "Splits whenever you gain one of the Valkyrie's helmets");
     settings.Add("100% NG+", false);
     settings.SetToolTip("100% NG+", "Enable this for the other option bellow. IMPORTANT! the stuff bellow is follows TpRedNinja's 100% splits and route so might not line up with your splits");
-    settings.Add("Main Story", false, "Main Story splits", "100% NG+");
+    settings.Add("Main Story", true, "Main Story splits", "100% NG+");
     settings.SetToolTip("Main Story", "Splits for certain mainstory stuff such as 1st troll fight, completeing the story portion of alfheim, & some other place");
-    settings.Add("Valks", false, "Valkyrie splits", "100% NG+");
+    settings.Add("Valks", true, "Valkyrie splits", "100% NG+");
     settings.SetToolTip("Valks", "Splits whenever you gain one of the Valkyrie's helmets");
-    settings.Add("Side Stuff", false, "Collectible splits", "100% NG+");
+    settings.Add("Side Stuff", true, "Collectible splits", "100% NG+");
     settings.SetToolTip("Side Stuff", "Splits whenever you gain 5, 9, or 18 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
-    settings.Add("Locations", false, "Location splits", "100% NG+");
+    settings.Add("Locations", true, "Location splits", "100% NG+");
     settings.SetToolTip("Locations", "Splits when you leave Stone falls after first visit and second visit, Brui storeroom, isle of death, iron cove, when you are at the foothills going into the valkyrie area, after atreus kills modi, then finally when you do the final clumb to the peak for the second time around");
     vars.completedsplits = new List<string>();
     vars.Hundo = new List<string>();
@@ -115,41 +113,65 @@ init
             "JOTUNHEIM!"
         };
     }
-}
-
-onStart
-{
-    vars.PrevObj = current.Obj;
-    vars.PrevValk = current.Valk;
+    //Prevent duble splitting
+     if (settings["Split for Valkyrie%"]){
+        vars.ValksDead = new List<string>{};
+     }
+     if (settings["Split for Main Game"]){
+        vars.ObjComplete = new List<int>{};
+     }
 }
 
 start
 {
-    if (settings["Split for main game"] && current.Obj == 0 && vars.PrevObj != 0){
+    if (settings["Split for Main Game"] && current.Obj == 0 && old.Obj != 0){
         return true;
     }
-    else if (settings["Split for main game"] && vars.PrevObj == 0){
-        vars.PrevObj = current.Obj;
-    }
-    if (settings["Split for Valkyrie%"] && vars.PrevShop > current.Shop){
+    if (settings["Split for Valkyrie%"] && old.Shop > current.Shop){
         return true;
-    }
-    else if (settings["Split for Valkyrie%"] && vars.PrevShop != current.Shop){
-        vars.PrevShop = current.Shop;
     }
 }
 
 split
 {
-    if (settings["Split for Valkyrie%"] && vars.PrevValk < current.Valk)
+    if (settings["Split for Valkyrie%"])
     {
-        vars.PrevValk = current.Valk;
-        return true;
+        if (current.GunnrHelmet == 1 && old.GunnrHelmet == -1 && !vars.ValksDead.Contains("Gunnr")){
+            vars.ValksDead.Add("Gunnr");
+            return true;
+        }
+        if (current.KaraHelmet == 1 && old.KaraHelmet == -1 && !vars.ValksDead.Contains("Kara")){
+            vars.ValksDead.Add("Kara");
+            return true;
+        }
+        if (current.GeirdrifulHelmet == 1 && old.GeirdrifulHelmet == -1 && !vars.ValksDead.Contains("Geirdriful")){
+            vars.ValksDead.Add("Geirdriful");
+            return true;
+        }
+        if (current.EirHelmet == 1 && old.EirHelmet == -1 && !vars.ValksDead.Contains("Eir")){
+            vars.ValksDead.Add("Eir");
+            return true;
+        }
+        if (current.RòtaHelmet == 1 && old.RòtaHelmet == -1 && !vars.ValksDead.Contains("Ròta")){
+            vars.ValksDead.Add("Ròta");
+            return true;
+        }
+        if (current.OlrunHelmet == 1 && old.OlrunHelmet == -1 && !vars.ValksDead.Contains("Olrun")){
+            vars.ValksDead.Add("Olrun");
+            return true;
+        }
+        if (current.GöndulHelmet == 1 && old.GöndulHelmet == -1 && !vars.ValksDead.Contains("Göndul")){
+           vars.ValksDead.Add("Göndul");
+            return true;
+        }
+        if (current.HildrHelmet == 1 && old.HildrHelmet == -1 && !vars.ValksDead.Contains("Hildr")){
+            vars.ValksDead.Add("Hildr");
+            return true;
+        }
     }
     
-    if (settings["Split for main game"] && vars.PrevObj != current.Obj)
-    {
-        vars.PrevObj = current.Obj;
+    if (settings["Split for Main Game"] && old.Obj != current.Obj && !vars.ObjComplete.Contains(current.Obj)){
+        vars.ObjComplete.Add(current.Obj);
         return true;
     }
 
@@ -167,35 +189,35 @@ split
         return false;
     }
    
-    if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to the Witch's Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch's Cave")
+    if (settings["Locations"] && current.SaveDescript == "Midgard - Shores of Nine - Return to the Witch's Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch's Cave")
     {
         vars.completedsplits.inserts(0, "Stone Falls I");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Isle of Death - Return to Týr’s Vault")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Isle of Death - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Isle of Death");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Iron Cove");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Stone Falls - Return to Týr’s Vault")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Stone Falls - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Stone Falls 100%");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault")
     {
         vars.completedsplits.inserts(0, "Buri's Storeroom");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
     {
         vars.completedsplits.inserts(0, "Foothills III");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - The Mountain - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - The Mountain - Journey back to the mountain" && old.SaveDescript == "Midgard - Foothills - Journey back to the mountain")
     {
         vars.completedsplits.inserts(0, "Foothills 100%");
         return true;
-    } else if (settings[Locations] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Find a new path up to the summit" && old.SaveDescript == "Midgard - The Mountain - Find a new path up to the summit")
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Hidden Chamber of Odin - Find a new path up to the summit" && old.SaveDescript == "Midgard - The Mountain - Find a new path up to the summit")
     {
         vars.completedsplits.inserts(0, "Mountain II");
         return true;
@@ -280,9 +302,4 @@ split
 isLoading
 {
     return (current.Load != 0);
-}
-
-onReset
-{
-    vars.PrevShop = -1;
 }
