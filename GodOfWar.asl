@@ -32,11 +32,11 @@ startup
 
     settings.Add("100% NG+", false);
     settings.SetToolTip("100% NG+", "Enable this for the other option bellow. IMPORTANT! the stuff bellow is follows TpRedNinja's 100% splits and route so might not line up with your splits");
-    settings.Add("Main Story", false, "100% NG+");
+    settings.Add("Main Story", false, "Main Story splits", "100% NG+");
     settings.SetToolTip("Main Story", "Splits for the main story");
-    settings.Add("Valks", false, "100% NG+");
+    settings.Add("Valks", false, "Valkyrie splits", "100% NG+");
     settings.SetToolTip("Valks", "Splits whenever you gain one of the Valkyrie's helmets");
-    settings.Add("Side Stuff", false, "100% NG+");
+    settings.Add("Side Stuff", false, "Collectible splits", "100% NG+");
     settings.SetToolTip("Side Stuff", "Splits whenever you gain 9 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
 
     vars.completedsplits = new List<string>();
