@@ -179,7 +179,7 @@ split
     if (settings["Side Stuff"] && current.SkapSlag == old.SkapSlag + 9 && (current.GunnrHelmet == 0 || current.KaraHelmet == 0 || current.GeirdrifulHelmet == 0 || current.EirHelmet == 0 || current.RòtaHelmet == 0 || current.OlrunHelmet == 0 || current.GöndulHelmet == 0 || current.HildrHelmet == 0))
     {
         return false;
-    } else if (settings["Valks"] && !vars.completedsplits.Contains("Hildur") && current.SkapSlag == old.SkapSlag + 9 && vars.completedsplits.Contains("Göndul") && current.Göndul)
+    } else if (settings["Valks"] && !vars.completedsplits.Contains("Hildur") && current.SkapSlag == old.SkapSlag + 9 && vars.completedsplits.Contains("Göndul") && current.GöndulHelmet == 1)
     {
         vars.completedsplits.Add("Hildur");
         return true;
