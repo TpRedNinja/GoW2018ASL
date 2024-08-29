@@ -5,7 +5,6 @@ state("GoW")
     int Obj : 0x22C6904; //Objective in int; Null objective = 0
     int Load : 0x22E9DB0; //0 not loading; 257/256 loading
     int Shop : 0x2448448; //0 out of the shop; 2 in the shop
-    int Valk : 0x2D43714; //36628 = 0 valks; 38192 all valks
     int SkapSlag : 0x0142C400, 0x0, 0x28, 0x20, 0x0, 0x40, 0x17B0; //tracks current Skap Slag
     string5 MRT : 0x01580010, 0x2A8, 0x0; //Tracks the number of odin ravens destroyed in midgard
     int ORL : 0x01425F90, 0x9AC0; //Tracks the number for the labor of odins ravens
@@ -40,11 +39,13 @@ startup
     settings.SetToolTip("Side Stuff", "Splits whenever you gain 5, 9, or 18 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
     settings.Add("Locations", false, "Location splits", "100% NG+");
     settings.SetToolTip("Locations", "Splits when you leave Stone falls after first visit and second visit, isle of death, iron cove,foothills going valk area , after atreus kills modi, final climb up the peak 2nd time");
+    //prevent duble splitting
     vars.completedsplits = new List<string>();
-    vars.Hundo = new List<string>();
+    vars.ValksDead = new List<string>{};
+    vars.ObjComplete = new List<int>{};
 }
 
-init
+onStart
 {
     if (settings["100% NG+"])
     {
@@ -115,13 +116,6 @@ init
             "JOTUNHEIM!"
         };
     }
-    //Prevent duble splitting
-     if (settings["Split for Valkyrie%"]){
-        vars.ValksDead = new List<string>{};
-     }
-     if (settings["Split for Main Game"]){
-        vars.ObjComplete = new List<int>{};
-     }
 }
 
 start
@@ -176,7 +170,7 @@ split
         }
     }
     
-    if (settings["Split for Main Game"] && old.Obj != current.Obj && !vars.ObjComplete.Contains(current.Obj)){
+    if (settings["Split for Main Game"] && old.Obj != current.Obj && !vars.ObjComplete.Contains(current.Obj) && current.Obj != 0){
         vars.ObjComplete.Add(current.Obj);
         return true;
     }
@@ -301,8 +295,15 @@ split
     }
 }
 
-
 isLoading
 {
     return (current.Load != 0);
+}
+
+onReset
+{
+    vars.completedsplits.Clear();
+    vars.ValksDead.Clear();
+    vars.ObjComplete.Clear();
+    vars.Hundo.delete();
 }
