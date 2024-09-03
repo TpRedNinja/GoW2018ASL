@@ -305,5 +305,9 @@ onReset
     vars.completedsplits.Clear();
     vars.ValksDead.Clear();
     vars.ObjComplete.Clear();
-    vars.Hundo.delete();
+    if (vars.Hundo != null)
+    {
+        vars.Hundo.delete();
+        vars.Hundo = null; 
+    }
 }
