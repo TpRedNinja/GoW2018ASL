@@ -43,6 +43,7 @@ startup
     vars.completedsplits = new List<string>();
     vars.ValksDead = new List<string>{};
     vars.ObjComplete = new List<int>{};
+    vars.Hundo = new List<string>(); //to not cause any issues inalize before starting the timer
 }
 
 onStart
@@ -305,8 +306,5 @@ onReset
     vars.completedsplits.Clear();
     vars.ValksDead.Clear();
     vars.ObjComplete.Clear();
-    if (vars.Hundo != null)
-    {
-        vars.Hundo = null; 
-    }
+    vars.Hundo.Clear(); //easier to just clear it that way it can just go back to the list
 }
