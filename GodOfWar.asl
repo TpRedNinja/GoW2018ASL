@@ -43,6 +43,7 @@ startup
     vars.completedsplits = new List<string>();
     vars.ValksDead = new List<string>{};
     vars.ObjComplete = new List<int>{};
+    vars.Hundo = new List<string>(); //to not cause any issues inalize before starting the timer
 }
 
 onStart
@@ -179,7 +180,7 @@ split
     if (settings["Side Stuff"] && current.SkapSlag == old.SkapSlag + 9 && (current.GunnrHelmet == 0 || current.KaraHelmet == 0 || current.GeirdrifulHelmet == 0 || current.EirHelmet == 0 || current.RòtaHelmet == 0 || current.OlrunHelmet == 0 || current.GöndulHelmet == 0 || current.HildrHelmet == 0))
     {
         return false;
-    } else if (settings["Valks"] && !vars.completedsplits.Contains("Hildur") && current.SkapSlag == old.SkapSlag + 9 && vars.completedsplits.Contains("Göndul") && current.Göndul)
+    } else if (settings["Valks"] && !vars.completedsplits.Contains("Hildur") && current.SkapSlag == old.SkapSlag + 9 && vars.completedsplits.Contains("Göndul") && current.GöndulHelmet == 1)
     {
         vars.completedsplits.Add("Hildur");
         return true;
@@ -305,9 +306,5 @@ onReset
     vars.completedsplits.Clear();
     vars.ValksDead.Clear();
     vars.ObjComplete.Clear();
-    if (vars.Hundo != null)
-    {
-        vars.Hundo.delete();
-        vars.Hundo = null; 
-    }
+    vars.Hundo.Clear(); //easier to just clear it that way it can just go back to the list
 }
