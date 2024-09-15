@@ -236,7 +236,7 @@ split
         return true;
     }
 
-    if (settings["Buri stronghold"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault" && vars.Buri == 2)
+    if (settings["Buri stronghold"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault" && vars.Buri >= 2)
     {
         vars.completedsplits.Add("Buri's Storeroom");
         return true;
