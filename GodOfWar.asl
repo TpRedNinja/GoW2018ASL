@@ -314,6 +314,14 @@ split
     {
         vars.completedsplits.Add("Into the Giant Snake");
         return true;
+    }  else if (settings["Main Story"] && current.Obj == 21393 && old.Obj == 21391)
+    {
+        vars.completedsplits.Add("Baldur II");
+        return true;
+    } else if (settings["Main Story"] && current.Obj == 19884 && old.Obj == 19879)
+    {
+        vars.completedsplits.Add("JOTANHEIM!");
+        return true;
     } else if (settings["Main Story"] && current.Obj == 19891 && old.Obj == 19884)
     {
         vars.completedsplits.Add("Finish");
