@@ -112,8 +112,6 @@ onStart
             "Ivaldi's Curse",
             "Council",
             "Realm Tears XIII",
-            "Discover",
-            "Open",
             "Realm Tear XIV"
         };
     }
