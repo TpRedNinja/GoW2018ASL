@@ -5,7 +5,6 @@ state("GoW")
     int Obj : 0x22C6904; //Objective in int; Null objective = 0
     int Load : 0x22E9DB0; //0 not loading; 257/256 loading
     int Shop : 0x2448448; //0 out of the shop; 2 in the shop
-    int Valk : 0x2D43714; //36628 = 0 valks; 38192 all valks
     int SkapSlag : 0x0142C400, 0x0, 0x28, 0x20, 0x0, 0x40, 0x17B0; //tracks current Skap Slag
     string5 MRT : 0x01580010, 0x2A8, 0x0; //Tracks the number of odin ravens destroyed in midgard
     int ORL : 0x01425F90, 0x9AC0; //Tracks the number for the labor of odins ravens
