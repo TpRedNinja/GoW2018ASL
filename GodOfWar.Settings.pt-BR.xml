@@ -1,0 +1,135 @@
+<Settings>
+    <Setting Id="Português Brasileiro" Label="Português Brasileiro" ToolTip="Configurações em Português" State="false">
+		
+		<Setting Id="100% NG+" Label="100% NG+" ToolTip="Enable this for the other option bellow. IMPORTANT! the stuff bellow is follows TpRedNinja's 100% splits and route so might not line up with your splits" State="false">
+			<Setting Id="Main Story" Label="Main Story" ToolTip="Splits for certain mainstory stuff such as 1st troll fight, completeing the story portion of alfheim, and some other place" State="false"/>
+			<Setting Id="Valks" Label="Valks" ToolTip="Splits whenever you gain one of the Valkyrie's helmets" State="false"/>
+			<Setting Id="Side Stuff" Label="Side Stuff" ToolTip="Splits whenever you gain 5, 9, or 18 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, and unlocking a new realm" State="false"/>
+			<Setting Id="Locations" Label="Locations" ToolTip="Splits when you leave Stone falls after first visit and second visit, isle of death, iron cove,foothills going valk area , after atreus kills modi, final climb up the peak 2nd time" State="false"/>
+		</Setting>
+
+		<Setting Id="Split for Valkyrie%" Label="Split for Valkyrie%" ToolTip="Splits whenever you gain one of the Valkyrie's helmets" State="false"/>
+
+		
+		<Setting Id="Divisões para o Jogo Principal" Label="Divisórias para o Jogo Principal" ToolTip="Divisórias toda vez que você completar uma tarefa da história" State="false">
+			<Setting Id="0,674" Label="caçar com Atreus" ToolTip="Divisórias quando o obj muda para caçar com Atreus" State="false"/>
+			<Setting Id="674,4620" Label="derrotar dauoi kaupmaor" ToolTip="Divisórias quando o obj muda para derrotar dauoi kaupmaor" State="false"/>
+			<Setting Id="4620,678" Label="retornar para a casa" ToolTip="Divisórias quando o obj muda para retornar para a casa" State="false"/>
+			<Setting Id="678,5347" Label="derrotar o estranho" ToolTip="Divisórias quando o obj muda para derrotar o estranho" State="false"/>
+			<Setting Id="5347,8970" Label="viagem para a montanha" ToolTip="Divisórias quando o obj muda para viagem para a montanha" State="false"/>
+			<Setting Id="8970,680" Label="continuar em direção à montanha" ToolTip="Divisórias quando o obj muda para continuar em direção à montanha" State="false"/>
+			<Setting Id="680,682" Label="escapar das ruínas" ToolTip="Divisórias quando o obj muda para escapar das ruínas" State="false"/>
+			<Setting Id="682,20115" Label="afastar os saqueadores" ToolTip="Divisórias quando o obj muda para afastar os saqueadores" State="false"/>
+			<Setting Id="20115,20118" Label="escapar das ruínas" ToolTip="Divisórias quando o obj muda para escapar das ruínas" State="false"/>
+			<Setting Id="20118,20120" Label="jogar seu machado nas árvores" ToolTip="Divisórias quando o obj muda para jogar seu machado nas árvores" State="false"/>
+			<Setting Id="20120,37223" Label="seguir através do portão para a montanha" ToolTip="Divisórias quando o obj muda para seguir através do portão para a montanha" State="false"/>
+			<Setting Id="37223,20401" Label="continuar para a montanha" ToolTip="Divisórias quando o obj muda para continuar para a montanha" State="false"/>
+			<Setting Id="20401,686" Label="caçar com Atreus" ToolTip="Divisórias quando o obj muda para caçar com Atreus" State="false"/>
+			<Setting Id="686,690" Label="seguir a bruxa" ToolTip="Divisórias quando o obj muda para seguir a bruxa" State="false"/>
+			<Setting Id="690,692" Label="coletar flor de pétalas brancas" ToolTip="Divisórias quando o obj muda para coletar flor de pétalas brancas" State="false"/>
+			<Setting Id="692,698" Label="ir para o barco" ToolTip="Divisórias quando o obj muda para ir para o barco" State="false"/>
+			<Setting Id="698,700" Label="barco em direção à luz do dia" ToolTip="Divisórias quando o obj muda para barco em direção à luz do dia" State="false"/>
+			<Setting Id="700,26608" Label="anclar na ponte" ToolTip="Divisórias quando o obj muda para anclar na ponte" State="false"/>
+			<Setting Id="26608,17325" Label="investigar o templo" ToolTip="Divisórias quando o obj muda para investigar o templo" State="false"/>
+			<Setting Id="17325,26864" Label="seguir para a torre" ToolTip="Divisórias quando o obj muda para seguir para a torre" State="false"/>
+			<Setting Id="26864,17496" Label="continuar em direção à montanha" ToolTip="Divisórias quando o obj muda para continuar em direção à montanha" State="false"/>
+			<Setting Id="17496,702" Label="seguir a bruxa" ToolTip="Divisórias quando o obj muda para seguir a bruxa" State="false"/>
+			<Setting Id="702,706" Label="seguir a bruxa" ToolTip="Divisórias quando o obj muda para seguir a bruxa" State="false"/>
+			<Setting Id="706,708" Label="viajar para alfheim" ToolTip="Divisórias quando o obj muda para viajar para alfheim" State="false"/>
+			<Setting Id="708,21279" Label="quando você chegar a alfheim" ToolTip="Divisórias quando o obj muda para quando você chegar a alfheim" State="false"/>
+			<Setting Id="21279,712" Label="depois que Atreus tiver as cenas com as vozes em alfheim no barco" ToolTip="Divisórias quando o obj muda para depois que Atreus tiver as cenas com as vozes em alfheim no barco" State="false"/>
+			<Setting Id="712,718" Label="encontrar uma maneira de entrar no templo" ToolTip="Divisórias quando o obj muda para encontrar uma maneira de entrar no templo" State="false"/>
+			<Setting Id="718,720" Label="reativar a ponte do templo anelada" ToolTip="Divisórias quando o obj muda para reativar a ponte do templo anelada" State="false"/>
+			<Setting Id="720,722" Label="voltar para a Ponte do Templo Anelado" ToolTip="Divisórias quando o obj muda para voltar para a Ponte do Templo Anelado" State="false"/>
+			<Setting Id="722,724" Label="quando você entrar no templo" ToolTip="Divisórias quando o obj muda para quando você entrar no templo" State="false"/>
+			<Setting Id="724,726" Label="encontrar uma maneira de entrar na colmeia" ToolTip="Divisórias quando o obj muda para encontrar uma maneira de entrar na colmeia" State="false"/>
+			<Setting Id="726,39433" Label="depois que você entrar na colmeia no corredor estreito" ToolTip="Divisórias quando o obj muda para depois que você entrar na colmeia no corredor estreito" State="false"/>
+			<Setting Id="39433,728" Label="destruir a colmeia e reivindicar a luz" ToolTip="Divisórias quando o obj muda para destruir a colmeia e reivindicar a luz" State="false"/>
+			<Setting Id="728,730" Label="encontrar uma saída do templo" ToolTip="Divisórias quando o obj muda para encontrar uma saída do templo" State="false"/>
+			<Setting Id="730,732" Label="retornar ao barco" ToolTip="Divisórias quando o obj muda para retornar ao barco" State="false"/>
+			<Setting Id="732,3701" Label="usar o elevador da tigela de areia" ToolTip="Divisórias quando o obj muda para usar o elevador da tigela de areia" State="false"/>
+			<Setting Id="3701,734" Label="retornar ao templo de Tyr" ToolTip="Divisórias quando o obj muda para retornar ao templo de Tyr" State="false"/>
+			<Setting Id="734,736" Label="viajar pelo reino de volta para Midgard" ToolTip="Divisórias quando o obj muda para viajar pelo reino de volta para Midgard" State="false"/>
+			<Setting Id="736,40077" Label="retornar à montanha" ToolTip="Divisórias quando o obj muda para retornar à montanha" State="false"/>
+			<Setting Id="40077,40026" Label="quando você entrar na torre de Vanaheim" ToolTip="Divisórias quando o obj muda para quando você entrar na torre de Vanaheim" State="false"/>
+			<Setting Id="40026,3713" Label="quando seu obj atualizar na torre de Vanaheim" ToolTip="Divisórias quando o obj muda para quando seu obj atualizar na torre de Vanaheim" State="false"/>
+			<Setting Id="3713,3699" Label="quando a missão Luz de Alfheim diz completa" ToolTip="Divisórias quando o obj muda para quando a missão Luz de Alfheim diz completa" State="false"/>
+			<Setting Id="3699,3702" Label="atravessar as cavernas escuras" ToolTip="Divisórias quando o obj muda para atravessar as cavernas escuras" State="false"/>
+			<Setting Id="3702,3704" Label="subir pelo eixo da caverna" ToolTip="Divisórias quando o obj muda para subir pelo eixo da caverna" State="false"/>
+			<Setting Id="3704,17494" Label="liberar a corrente" ToolTip="Divisórias quando o obj muda para liberar a corrente" State="false"/>
+			<Setting Id="17494,18017" Label="encontrar uma maneira de ascender" ToolTip="Divide quando o objeto muda para encontrar uma maneira de ascender" State="false"/>
+			<Setting Id="18017,3706" Label="chegar ao cume" ToolTip="Divide quando o objeto muda para chegar ao cume" State="false"/>
+			<Setting Id="3706,3719" Label="quando dentro da montanha estiver completo" ToolTip="Divide quando o objeto muda para quando dentro da montanha estiver completo" State="false"/>
+			<Setting Id="3719,36974" Label="retornar à caverna da bruxa" ToolTip="Divide quando o objeto muda para retornar à caverna da bruxa" State="false"/>
+			<Setting Id="36974,36976" Label="quando atracar na caverna da bruxa" ToolTip="Divide quando o objeto muda para quando atracar na caverna da bruxa" State="false"/>
+			<Setting Id="36976,43073" Label="retornar ao barco" ToolTip="Divide quando o objeto muda para retornar ao barco" State="false"/>
+			<Setting Id="43073,37095" Label="ir ao templo de Tyr" ToolTip="Divide quando o objeto muda para ir ao templo de Tyr" State="false"/>	
+			<Setting Id="37095,21412" Label="quando uma nova missão de destino estiver completa" ToolTip="Divide quando o objeto muda para quando uma nova missão de destino estiver completa" State="false"/>
+			<Setting Id="21412,738" Label="investigar o gigante morto" ToolTip="Divide quando o objeto muda para investigar o gigante morto" State="false"/>
+			<Setting Id="738,740" Label="recuperar um pedaço do cinzel" ToolTip="Divide quando o objeto muda para recuperar um pedaço do cinzel" State="false"/>
+			<Setting Id="740,742" Label="encontrar uma maneira de quebrar o gelo" ToolTip="Divide quando o objeto muda para encontrar uma maneira de quebrar o gelo" State="false"/>
+			<Setting Id="742,25884" Label="falar com Sindri" ToolTip="Divide quando o objeto muda para falar com Sindri" State="false"/>
+			<Setting Id="25884,21529" Label="encontrar uma maneira de chegar ao martelo" ToolTip="Divide quando o objeto muda para encontrar uma maneira de chegar ao martelo" State="false"/>	
+			<Setting Id="21529,21583" Label="subir pelo martelo" ToolTip="Divide quando o objeto muda para subir pelo martelo" State="false"/>
+			<Setting Id="21583,21585" Label="soltar a tira" ToolTip="Divide quando o objeto muda para soltar a tira" State="false"/>
+			<Setting Id="21585,21587" Label="encontrar uma maneira de chegar à cabeça do martelo" ToolTip="Divide quando o objeto muda para encontrar uma maneira de chegar à cabeça do martelo" State="false"/>
+			<Setting Id="21587,21591" Label="ir até o cinzel" ToolTip="Divide quando o objeto muda para ir até o cinzel" State="false"/>
+			<Setting Id="21591,744" Label="recuperar um pedaço do cinzel" ToolTip="Divide quando o objeto muda para recuperar um pedaço do cinzel" State="false"/>
+			<Setting Id="744,746" Label="quando o cinzel mágico estiver completo" ToolTip="Divide quando o objeto muda para quando o cinzel mágico estiver completo" State="false"/>
+			<Setting Id="746,9268" Label="retornar ao lago dos nove" ToolTip="Divide quando o objeto muda para retornar ao lago dos nove" State="false"/>
+			<Setting Id="9268,758" Label="ir ao cofre de Tyr" ToolTip="Divide quando o objeto muda para ir ao cofre de Tyr" State="false"/>
+			<Setting Id="758,40985" Label="quando precisar interagir com a tigela de areia" ToolTip="Divide quando o objeto muda para quando precisar interagir com a tigela de areia" State="false"/>
+			<Setting Id="40985,1398" Label="pedir ajuda a Freya" ToolTip="Divide quando o objeto muda para pedir ajuda a Freya" State="false"/>
+			<Setting Id="1398,1400" Label="usar o barco de Freya para voltar para casa" ToolTip="Divide quando o objeto muda para usar o barco de Freya para voltar para casa" State="false"/>
+			<Setting Id="1400,7800" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="7800,1404" Label="viajar para Helheim" ToolTip="Divide quando o objeto muda para viajar para Helheim" State="false"/>
+			<Setting Id="1404,1406" Label="chegar ao guardião da ponte" ToolTip="Divide quando o objeto muda para chegar ao guardião da ponte" State="false"/>
+			<Setting Id="1406,3578" Label="derrotar o guardião da ponte" ToolTip="Divide quando o objeto muda para derrotar o guardião da ponte" State="false"/>
+			<Setting Id="3578,7808" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="7808,1408" Label="entregar o coração a Freya" ToolTip="Divide quando o objeto muda para entregar o coração a Freya" State="false"/>
+			<Setting Id="1408,1410" Label="quando a missão da doença estiver completa" ToolTip="Divide quando o objeto muda para quando a missão da doença estiver completa" State="false"/>
+			<Setting Id="1410,43039" Label="entrar no barco" ToolTip="Divide quando o objeto muda para entrar no barco" State="false"/>
+			<Setting Id="43039,756" Label="retornar ao cofre de Tyr" ToolTip="Divide quando o objeto muda para retornar ao cofre de Tyr" State="false"/>
+			<Setting Id="756,1414" Label="recuperar a runa negra" ToolTip="Divide quando o objeto muda para recuperar a runa negra" State="false"/>
+			<Setting Id="1414,3577" Label="desativar as defesas do cofre" ToolTip="Divide quando o objeto muda para desativar as defesas do cofre" State="false"/>
+			<Setting Id="3577,760" Label="escapar da armadilha" ToolTip="Divide quando o objeto muda para escapar da armadilha" State="false"/>
+			<Setting Id="760,1416" Label="recuperar a runa negra" ToolTip="Divide quando o objeto muda para recuperar a runa negra" State="false"/>
+			<Setting Id="1416,43063" Label="sair do cofre de Tyr" ToolTip="Divide quando o objeto muda para sair do cofre de Tyr" State="false"/>
+			<Setting Id="43063,43060" Label="voltar pelo torre" ToolTip="Divide quando o objeto muda para voltar pelo torre" State="false"/>
+			<Setting Id="43060,21328" Label="voltar para a montanha" ToolTip="Divide quando o objeto muda para voltar para a montanha" State="false"/>
+			<Setting Id="21328,21330" Label="encontrar um novo caminho para o cume" ToolTip="Divide quando o objeto muda para encontrar um novo caminho para o cume" State="false"/>
+			<Setting Id="21330,21332" Label="continuar em direção ao cume" ToolTip="Divide quando o objeto muda para continuar em direção ao cume" State="false"/>	
+			<Setting Id="21332,21334" Label="abrir a ponte para Jotunheim" ToolTip="Divide quando o objeto muda para abrir a ponte para Jotunheim" State="false"/>
+			<Setting Id="21334,21336" Label="capturar Baldur" ToolTip="Divide quando o objeto muda para capturar Baldur" State="false"/>
+			<Setting Id="21336,748" Label="encontrar uma maneira de sair de Helheim" ToolTip="Divide quando o objeto muda para encontrar uma maneira de sair de Helheim" State="false"/>
+			<Setting Id="748,750" Label="usar o navio" ToolTip="Divide quando o objeto muda para usar o navio" State="false"/>
+			<Setting Id="750,754" Label="escapar de Helheim" ToolTip="Divide quando o objeto muda para escapar de Helheim" State="false"/>
+			<Setting Id="754,3580" Label="viajar de volta para Midgard" ToolTip="Divide quando o objeto muda para viajar de volta para Midgard" State="false"/>
+			<Setting Id="3580,762" Label="mostrar os planos da chave de Tyr a Brok" ToolTip="Divide quando o objeto muda para mostrar os planos da chave de Tyr a Brok" State="false"/>
+			<Setting Id="762,764" Label="localizar a porta misteriosa de Tyr" ToolTip="Divide quando o objeto muda para localizar a porta misteriosa de Tyr" State="false"/>
+			<Setting Id="764,3598" Label="explorar a câmara secreta de Tyr" ToolTip="Divide quando o objeto muda para explorar a câmara secreta de Tyr" State="false"/>
+			<Setting Id="3598,3582" Label="quebrar as correntes" ToolTip="Divide quando o objeto muda para quebrar as correntes" State="false"/>
+			<Setting Id="3582,766" Label="voltar e girar o templo" ToolTip="Divide quando o objeto muda para voltar e girar o templo" State="false"/>
+			<Setting Id="766,17679" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="17679,18769" Label="explorar o reino entre reinos" ToolTip="Divide quando o objeto muda para explorar o reino entre reinos" State="false"/>
+			<Setting Id="18769,18771" Label="levar a pedra da unidade ao precipício" ToolTip="Divide quando o objeto muda para levar a pedra da unidade ao precipício" State="false"/>
+			<Setting Id="18771,21378" Label="investigar a torre de Jotunheim" ToolTip="Divide quando o objeto muda para investigar a torre de Jotunheim" State="false"/>
+			<Setting Id="21378,21381" Label="sobreviver ao desafio dos reinos" ToolTip="Divide quando o objeto muda para sobreviver ao desafio dos reinos" State="false"/>
+			<Setting Id="21381,3600" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="3600,3568" Label="falar com Brok e Sindri" ToolTip="Divide quando o objeto muda para falar com Brok e Sindri" State="false"/>
+			<Setting Id="3568,3571" Label="retornar ao chifre da serpente em Midgard" ToolTip="Divide quando o objeto muda para retornar ao chifre da serpente em Midgard" State="false"/>
+			<Setting Id="3571,3588" Label="barco na boca da serpente" ToolTip="Divide quando o objeto muda para barco na boca da serpente" State="false"/>
+			<Setting Id="3588,3573" Label="encontrar o olho de Mimir" ToolTip="Divide quando o objeto muda para encontrar o olho de Mimir" State="false"/>
+			<Setting Id="3573,3574" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="3574,21391" Label="derrotar Baldur" ToolTip="Divide quando o objeto muda para derrotar Baldur" State="false"/>
+			<Setting Id="21391,21393" Label="retornar à sala de viagem entre reinos" ToolTip="Divide quando o objeto muda para retornar à sala de viagem entre reinos" State="false"/>
+			<Setting Id="21393,19877" Label="encontrar o pico mais alto de Jotunheim" ToolTip="Divide quando o objeto muda para encontrar o pico mais alto de Jotunheim" State="false"/>
+			<Setting Id="19877,19879" Label="espalhar suas cinzas" ToolTip="Divide quando o objeto muda para espalhar suas cinzas" State="false"/>
+			<Setting Id="19879,19884" Label="retornar ao templo de Tyr" ToolTip="Divide quando o objeto muda para retornar ao templo de Tyr" State="false"/>
+			<Setting Id="19884,19891" Label="explorar os reinos" ToolTip="Divide quando o objeto muda para explorar os reinos" State="false"/>
+		</Setting>	
+	</Setting>
+</Settings>
+
+<!--
+<Setting Id="," Label="" ToolTip="Splits when the obj changes to" State="false"/>
