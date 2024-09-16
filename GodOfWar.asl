@@ -25,28 +25,24 @@ state("GoW")
 startup
 {
     Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
-  
-  switch (System.Globalization.CultureInfo.CurrentCulture.Name)
-  {
-    case "pt-BR":
-      vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.pt-BR.xml");
-      print("Brazil");
-      vars.Language = "Brazil"
-      break;
-    default:
-      vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.en-US.xml");
-      print("English");
-      vars.Language = "English"
-      break;
-  }
 
+    var culture = System.Globalization.CultureInfo.CurrentCulture.Name;
+    vars.Log(culture);
+
+    switch (culture)
+    {
+        case "pt-BR":
+            vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings." + culture + ".xml");
+            break;
+        default:
+            vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.en-US.xml");
+            break;
+    }
+
+    // TODO: Move to the settings files.
     settings.Add("Buri stronghold", false, "Buri stronghold split", "Locations");
     settings.SetToolTip("Buri stronghold", "Splits when you leave Buri stronghold and dock at tyr's temple");
-    if (vars.Language == "English")
-    {
-        settings.Add("Splits para o Jogo Principal", false);
-    }
-    
+
     vars.completedsplits = new List<string>{};
     vars.ValksDead = new List<string>{};
     vars.ObjComplete = new List<int>{};
@@ -126,9 +122,6 @@ start
 {
     if (settings["Splits for Main Game"] && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
         return true;
-    } else if (settings["Splits para o Jogo Principal"] && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0 && vars.Language == "Brazil")
-    {
-        return true;
     }
     if (settings["Split for Valkyrie%"] && old.Shop > current.Shop){
         return true;
@@ -176,19 +169,8 @@ split
             return true;
         }
     }
-    
+
     if (settings["Splits for Main Game"])
-    {
-        if (old.Obj != current.Obj) // Split on Obj address changing
-        {
-        string objTransition = old.Obj + "," + current.Obj;
-        if (settings.ContainsKey(objTransition) && settings[objTransition])
-            {
-            vars.CompletedSplits.Add(objTransition);
-            return true;
-            }
-        }
-    } else if (settings["Splits para o Jogo Principal"] && vars.Language == "Brazil")
     {
         if (old.Obj != current.Obj) // Split on Obj address changing
         {
@@ -212,8 +194,8 @@ split
     } else if (settings["Side Stuff"] && (current.SkapSlag == old.SkapSlag + 5 || current.SkapSlag == old.SkapSlag + 9 || current.SkapSlag == old.SkapSlag + 18) )
     {
         return true;
-    } 
-   
+    }
+
     //splits when leaving certain locations on the map
     if (settings["Locations"] && current.SaveDescript == "Midgard - Veithurgard - Return to the Witch’s Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch’s Cave" && !vars.completedsplits.Contains("Stone Falls I"))
     {
@@ -261,8 +243,8 @@ split
     {
         vars.Buri ++;
         return false;
-    } 
-    
+    }
+
     //Splits whenever you gain helmets
     if (settings["Valks"] && current.GunnrHelmet == 1 && old.GunnrHelmet == -1 && !vars.completedsplits.Contains("Gunnr"))
     {
@@ -350,10 +332,10 @@ onSplit
 {
     if (settings["Side Stuff"])
     {
-        vars.completedsplits.Add(vars.Hundo[0]);  
+        vars.completedsplits.Add(vars.Hundo[0]);
         vars.Hundo.RemoveAt(0);
     }
-    
+
 }
 
 
@@ -377,4 +359,3 @@ onReset
         vars.completed.Add(0, "");
         return true;
     }*/
-    
