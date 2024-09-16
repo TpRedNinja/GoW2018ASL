@@ -21,7 +21,7 @@
 		<Setting Id="698,700" Label="Siga em direção à luz do dia" ToolTip="Splita quando o objetivo muda para siga em direção à luz do dia" State="false"/>
 		<Setting Id="700,26608" Label="Atraque na ponte" ToolTip="Splita quando o objetivo muda para atraque na ponte" State="false"/>
 		<Setting Id="26608,17325" Label="Investigue o templo" ToolTip="Splita quando o objetivo muda para investigue o templo" State="false"/>
-		<Setting Id="17325,26864" Label="Segua em direção a torre" ToolTip="Splita quando o objetivo muda para siga em direção a torre" State="false"/>
+		<Setting Id="17325,26864" Label="Siga em direção a torre" ToolTip="Splita quando o objetivo muda para siga em direção a torre" State="false"/>
 		<Setting Id="26864,17496" Label="Continue em direção à montanha" ToolTip="Splita quando o objetivo muda para continue em direção à montanha" State="false"/>
 		<Setting Id="17496,702" Label="Siga a bruxa" ToolTip="Splita quando o objetivo muda para siga a bruxa" State="false"/>
 		<Setting Id="702,706" Label="Siga a bruxa 2" ToolTip="Splita quando o objetivo muda para siga a bruxa pela 2 vez" State="false"/>
