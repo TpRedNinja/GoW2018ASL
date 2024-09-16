@@ -40,6 +40,10 @@ startup
 
     settings.Add("Buri stronghold", false, "Buri stronghold split", "Locations");
     settings.SetToolTip("Buri stronghold", "Splits when you leave Buri stronghold and dock at tyr's temple");
+    if (vars.Language == "English")
+    {
+        settings.Add("Splits para o Jogo Principal", false);
+    }
     
     vars.completedsplits = new List<string>{};
     vars.ValksDead = new List<string>{};
@@ -118,7 +122,10 @@ onStart
 
 start
 {
-    if ((settings["Splits for Main Game"] || settings["Splits para o Jogo Principal"]) && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
+    if (settings["Splits for Main Game"] && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
+        return true;
+    } else if (settings["Splits para o Jogo Principal"] && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0 && vars.Language == "Brazil")
+    {
         return true;
     }
     if (settings["Split for Valkyrie%"] && old.Shop > current.Shop){
@@ -168,7 +175,18 @@ split
         }
     }
     
-    if (settings["Splits for Main Game"] || settings["Splits para o Jogo Principal"])
+    if (settings["Splits for Main Game"])
+    {
+        if (old.Obj != current.Obj) // Split on Obj address changing
+        {
+        string objTransition = old.Obj + "," + current.Obj;
+        if (settings.ContainsKey(objTransition) && settings[objTransition])
+            {
+            vars.CompletedSplits.Add(objTransition);
+            return true;
+            }
+        }
+    } else if (settings["Splits para o Jogo Principal"] && vars.Language == "Brazil")
     {
         if (old.Obj != current.Obj) // Split on Obj address changing
         {
