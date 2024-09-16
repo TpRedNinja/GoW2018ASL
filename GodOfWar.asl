@@ -22,28 +22,29 @@ state("GoW")
     int SigrunHelmet : 0x014261C0, 0x430; // -1 when u dont have the helmet 1 when u do
 }
 
-
 startup
 {
-    settings.Add("Split for Main Game", true);
-    settings.SetToolTip("Split for Main Game", "Splits everytime you complete a story task");
-    settings.Add("Split for Valkyrie%", false);
-    settings.SetToolTip("Split for Valkyrie%", "Splits whenever you gain one of the Valkyrie's helmets");
-    settings.Add("100% NG+", false);
-    settings.SetToolTip("100% NG+", "Enable this for the other option bellow. IMPORTANT! the stuff bellow is follows TpRedNinja's 100% splits and route so might not line up with your splits");
-    settings.Add("Main Story", false, "Main Story splits", "100% NG+");
-    settings.SetToolTip("Main Story", "Splits for certain mainstory stuff such as 1st troll fight, completeing the story portion of alfheim, & some other place");
-    settings.Add("Valks", false, "Valkyrie splits", "100% NG+");
-    settings.SetToolTip("Valks", "Splits whenever you gain one of the Valkyrie's helmets");
-    settings.Add("Side Stuff", false, "Collectible splits", "100% NG+");
-    settings.SetToolTip("Side Stuff", "Splits whenever you gain 5, 9, or 18 skap slag such as certain obj, realm tears completion, completing labors/artifact sets, & unlocking a new realm");
-    settings.Add("Locations", false, "Location splits", "100% NG+");
-    settings.SetToolTip("Locations", "Splits when you leave Stone falls after first visit and second visit, isle of death, iron cove,foothills going valk area , after atreus kills modi, final climb up the peak 2nd time");
-    //prevent duble splitting
-    vars.completedsplits = new List<string>();
+    Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
+  
+  switch (System.Globalization.CultureInfo.CurrentCulture.Name)
+  {
+    case "pt-BR":
+      vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.pt-BR.xml");
+      print("Brazil");
+      break;
+    default:
+      vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.en-US.xml");
+      print("English");
+      break;
+  }
+
+    settings.Add("Buri stronghold", false, "Buri stronghold split", "Locations");
+    settings.SetToolTip("Buri stronghold", "Splits when you leave Buri stronghold and dock at tyr's temple");
+    
+    vars.completedsplits = new List<string>{};
     vars.ValksDead = new List<string>{};
     vars.ObjComplete = new List<int>{};
-    vars.Hundo = new List<string>(); //to not cause any issues inalize before starting the timer
+    vars.Buri = 0;
 }
 
 onStart
@@ -110,18 +111,14 @@ onStart
             "Ivaldi's Curse",
             "Council",
             "Realm Tears XIII",
-            "Discover",
-            "Open",
-            "Realm Tear XIV",
-            "Baldur fight II",
-            "JOTUNHEIM!"
+            "Realm Tear XIV"
         };
     }
 }
 
 start
 {
-    if (settings["Split for Main Game"] && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
+    if ((settings["Split for Main Game"] || settings["Divisões para o Jogo Principal"]) && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
         return true;
     }
     if (settings["Split for Valkyrie%"] && old.Shop > current.Shop){
@@ -171,12 +168,20 @@ split
         }
     }
     
-    if (settings["Split for Main Game"] && old.Obj != current.Obj && !vars.ObjComplete.Contains(current.Obj) && current.Obj != 0){
-        vars.ObjComplete.Add(current.Obj);
-        return true;
+    if (settings["Split for Main Game"] || settings["Divisões para o Jogo Principal"])
+    {
+        if (old.Obj != current.Obj) // Split on Obj address changing
+        {
+        string objTransition = old.Obj + "," + current.Obj;
+        if (settings.ContainsKey(objTransition) && settings[objTransition])
+            {
+            vars.CompletedSplits.Add(objTransition);
+            return true;
+            }
+        }
     }
 
-   //makes sure it doesnt split when placing the valk helmets also splits when skap slag increases by 5,9, or 18
+    //makes sure it doesnt split when placing the valk helmets also splits when skap slag increases by 5,9, or 18
     if (settings["Side Stuff"] && current.SkapSlag == old.SkapSlag + 9 && (current.GunnrHelmet == 0 || current.KaraHelmet == 0 || current.GeirdrifulHelmet == 0 || current.EirHelmet == 0 || current.RòtaHelmet == 0 || current.OlrunHelmet == 0 || current.GöndulHelmet == 0 || current.HildrHelmet == 0))
     {
         return false;
@@ -186,16 +191,23 @@ split
         return true;
     } else if (settings["Side Stuff"] && (current.SkapSlag == old.SkapSlag + 5 || current.SkapSlag == old.SkapSlag + 9 || current.SkapSlag == old.SkapSlag + 18) )
     {
-        vars.completedsplits.Add(vars.Hundo[0]);
-        vars.Hundo.RemoveAt(0);
         return true;
     } 
    
-        if (settings["Locations"] && current.SaveDescript == "Midgard - Veithurgard - Return to the Witch’s Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch’s Cave" && !vars.completedsplits.Contains("Stone Falls I"))
+    //splits when leaving certain locations on the map
+    if (settings["Locations"] && current.SaveDescript == "Midgard - Veithurgard - Return to the Witch’s Cave" && old.SaveDescript == "Midgard - Stone Falls - Return to the Witch’s Cave" && !vars.completedsplits.Contains("Stone Falls I"))
     {
         vars.completedsplits.Add("Stone Falls I");
         return true;
-    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Isle of Death - Return to Týr’s Vault" && !vars.completedsplits.Contains("Isle of Death"))
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Ruins of the Ancient - Go to Týr’s Vault" && old.SaveDescript == "Midgard - Shores of Nine - Go to Týr’s Vault" && !vars.completedsplits.Contains("Light Elf Outpost"))
+    {
+        vars.completedsplits.Add("Light Elf Outpost");
+        return true;
+    } else if (settings["Locations"] && current.SaveDescript == "Midgard - Northri Stronghold - Go to Týr’s Vault" && old.SaveDescript == "Midgard - Ruins of the Ancient - Go to Týr’s Vault" && !vars.completedsplits.Contains("Ruins of the Ancient"))
+    {
+        vars.completedsplits.Add("Ruins of the Ancient");
+        return true;
+    }  else if (settings["Locations"] && current.SaveDescript == "Midgard - Iron Cove - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Isle of Death - Return to Týr’s Vault" && !vars.completedsplits.Contains("Isle of Death"))
     {
         vars.completedsplits.Add("Isle of Death");
         return true;
@@ -220,8 +232,18 @@ split
         vars.completedsplits.Add("Mountain II");
         return true;
     }
+
+    if (settings["Buri stronghold"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault" && vars.Buri >= 2)
+    {
+        vars.completedsplits.Add("Buri's Storeroom");
+        return true;
+    } else if(settings["Buri stronghold"] && current.SaveDescript == "Midgard - Shores of Nine - Return to Týr’s Vault" && old.SaveDescript == "Midgard - Buri’s Storeroom - Return to Týr’s Vault" && vars.Buri == 0)
+    {
+        vars.Buri ++;
+        return false;
+    } 
     
-        //Splits whenever you gain helmets
+    //Splits whenever you gain helmets
     if (settings["Valks"] && current.GunnrHelmet == 1 && old.GunnrHelmet == -1 && !vars.completedsplits.Contains("Gunnr"))
     {
         vars.completedsplits.Add("Gunnr");
@@ -289,12 +311,31 @@ split
     {
         vars.completedsplits.Add("Into the Giant Snake");
         return true;
+    }  else if (settings["Main Story"] && current.Obj == 21393 && old.Obj == 21391)
+    {
+        vars.completedsplits.Add("Baldur II");
+        return true;
+    } else if (settings["Main Story"] && current.Obj == 19884 && old.Obj == 19879)
+    {
+        vars.completedsplits.Add("JOTANHEIM!");
+        return true;
     } else if (settings["Main Story"] && current.Obj == 19891 && old.Obj == 19884)
     {
         vars.completedsplits.Add("Finish");
         return true;
     }
 }
+
+onSplit
+{
+    if (settings["Side Stuff"])
+    {
+        vars.completedsplits.Add(vars.Hundo[0]);  
+        vars.Hundo.RemoveAt(0);
+    }
+    
+}
+
 
 isLoading
 {
@@ -303,8 +344,17 @@ isLoading
 
 onReset
 {
+    vars.Buri = 0;
     vars.completedsplits.Clear();
     vars.ValksDead.Clear();
     vars.ObjComplete.Clear();
-    vars.Hundo.Clear(); //easier to just clear it that way it can just go back to the list
+    vars.Hundo.Clear();
 }
+
+//so i dont have to make this if statment over an over again
+/*else if (settings["Side Stuff"] && current.SaveDescript == "" && old.SaveDescript == "")
+    {
+        vars.completed.Add(0, "");
+        return true;
+    }*/
+    
