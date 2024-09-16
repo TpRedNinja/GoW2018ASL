@@ -31,10 +31,12 @@ startup
     case "pt-BR":
       vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.pt-BR.xml");
       print("Brazil");
+      vars.Language = "Brazil"
       break;
     default:
       vars.Helper.Settings.CreateFromXml("Components/GodOfWar.Settings.en-US.xml");
       print("English");
+      vars.Language = "English"
       break;
   }
 
