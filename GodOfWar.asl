@@ -118,7 +118,7 @@ onStart
 
 start
 {
-    if ((settings["Split for Main Game"] || settings["Divisões para o Jogo Principal"]) && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
+    if ((settings["Splits for Main Game"] || settings["Divisões para o Jogo Principal"]) && current.MainMenu == 0 && old.MainMenu == 1 && current.Load == 0){
         return true;
     }
     if (settings["Split for Valkyrie%"] && old.Shop > current.Shop){
@@ -168,7 +168,7 @@ split
         }
     }
     
-    if (settings["Split for Main Game"] || settings["Divisões para o Jogo Principal"])
+    if (settings["Splits for Main Game"] || settings["Divisões para o Jogo Principal"])
     {
         if (old.Obj != current.Obj) // Split on Obj address changing
         {
