@@ -1,5 +1,5 @@
 <Settings>
-	<Setting Id="Split for Valkyrie%" Label="Splits para Valkyrie%" ToolTip="Splita quando você obtem um capacete de valquiria" State="false"/>
+	<Setting Id="Split for Valkyrie%" Label="Splits para Valkyrie%" ToolTip="Splita quando você obtém um capacete de valquiria" State="false"/>
 
 	<Setting Id="Splits for Main Game" Label="Splits para o Jogo Principal" ToolTip="Splita toda vez que você completar um objetivo da história" State="false">
 		<Setting Id="0,674" Label="Caçe com Atreus" ToolTip="Splita quando o objetivo muda para caçe com Atreus" State="false"/>
